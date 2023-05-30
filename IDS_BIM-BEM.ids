@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ids:ids xmlns:ids="http://standards.buildingsmart.org/IDS" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.buildingsmart.org/IDS  ids_09.xsd">
+	<ids:info>
+		<ids:title>BIM-BEM workflow to INI-C</ids:title>
+		<ids:description>IDS for return verification</ids:description>
+		<ids:date>2022-01-03</ids:date>
+		<ids:milestone>Fase de design</ids:milestone>
+	</ids:info>
+
+	<ids:specifications>
+		
+		<!-- This specification is used to verify IFC Models in BIM-BEM process -->
+
+		<ids:specification ifcVersion="IFC2X3" name="Paredes externas" minOccurs="1">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+
+			<ids:requirements>
+				<ids:property measure="IfcBoolean">
+					<ids:propertySet>
+						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>IsExternal</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<ids:simpleValue>TRUE</ids:simpleValue>
+					</ids:value>	
+				</ids:property>
+			</ids:requirements>
+
+		</ids:specification>
+
+
+
+		<ids:specification ifcVersion="IFC2X3" name="Paredes externas devem apresentar a propriedade de transmitância térmica" minOccurs="1">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+
+			<ids:requirements>
+				<ids:property measure="IfcThermalTransmittanceMeasure" minOccurs="1" maxOccurs="1">
+					<ids:propertySet>
+						<ids:simpleValue>Pset_WallCommon</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>ThermalTransmittance</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:Decimal">
+    						<xs:minInclusive value = "0" fixed="false"/>
+    						<xs:maxInclusive value = "20" fixed="false"/>
+						</xs:restriction>
+					</ids:value>
+
+
+				</ids:property>
+
+			</ids:requirements>
+				
+		</ids:specification>
+
+
+
+		<ids:specification ifcVersion="IFC2X3" name="Paredes externas devem apresentar a propriedade de Condutividade Térmica do Material" minOccurs="1">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+
+			<ids:requirements>
+				
+				<ids:property measure="IfcThermalConductivityMeasure" minOccurs="1" maxOccurs="1">
+					<ids:propertySet>
+							<ids:simpleValue>Pset_MaterialThermal</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>ThermalConductivity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:Decimal">
+    						<xs:minInclusive value = "0" fixed="false"/>
+    						<xs:maxInclusive value = "10" fixed="false"/>
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+			</ids:requirements>		
+		</ids:specification>
+
+	
+
+		<ids:specification ifcVersion="IFC2X3" name="Paredes externas devem apresentar a propriedade de Calor Específico do Material" minOccurs="1">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+
+			<ids:requirements>
+				
+				<ids:property measure="IfcSpecificHeatCapacityMeasure" minOccurs="1" maxOccurs="1">
+					<ids:propertySet>
+							<ids:simpleValue>Pset_MaterialThermal</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>SpecificHeatCapacity</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:Integer">
+    						<xs:minInclusive value = "100" fixed="false"/>
+    						<xs:maxInclusive value = "1000" fixed="false"/>
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+
+			</ids:requirements>
+				
+		</ids:specification>
+
+
+
+		<ids:specification ifcVersion="IFC2X3" name="Paredes externas devem apresentar a propriedade de Densidade do Material" minOccurs="1">
+			<ids:applicability>
+				<ids:entity>
+					<ids:name>
+						<ids:simpleValue>IFCWALL</ids:simpleValue>
+					</ids:name>
+				</ids:entity>
+			</ids:applicability>
+
+			<ids:requirements>
+				
+				<ids:property measure="IfcMassDensityMeasure" minOccurs="1" maxOccurs="1">
+					<ids:propertySet>
+							<ids:simpleValue>Pset_MaterialThermal</ids:simpleValue>
+					</ids:propertySet>
+					<ids:name>
+						<ids:simpleValue>Density</ids:simpleValue>
+					</ids:name>
+					<ids:value>
+						<xs:restriction base="xs:Integer">
+    						<xs:minInclusive value = "10" fixed="false"/>
+    						<xs:maxInclusive value = "3000" fixed="false"/>
+						</xs:restriction>
+					</ids:value>
+				</ids:property>
+
+			</ids:requirements>
+				
+		</ids:specification>
+
+	</ids:specifications>
+
+
+</ids:ids>
+
+
+
+
+
